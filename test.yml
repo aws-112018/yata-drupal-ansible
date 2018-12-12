@@ -1,0 +1,25 @@
+---
+- name: test de la solution drupal
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: debut du test
+      debug:
+        msg: "voici le début du test"
+    - name:  "get distribution vm"
+      debug: 
+        msg: "mon system d'exploitation est {{ ansible_distribution }} {{ ansible_distribution_version }} " 
+    - set_fact:
+        ip_address:  "{{ ansible_all_ipv4_addresses[0] }}"   
+    - name: "recupe adress ip"
+      debug:
+        msg: "http://{{ ip_address }}"
+    - name: "recherche de loccurence Powered by"
+      uri:
+        url: "http://{{ ip_address }}"
+        return_content: yes
+      register: output
+    - debug:
+        msg: "Drupal ok"
+      when: output.content is search('Powered by')
+      failed_when: output.content is not search('Powered by') 

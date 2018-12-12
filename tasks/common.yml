@@ -1,0 +1,24 @@
+---
+  - name: "Get software for apt repository management."
+    apt:      
+      name:
+        - python-apt
+        - python-pycurl
+      state: present
+  - name: "Add ondrej repository for later versions of PHP."
+    apt_repository:
+      repo: 'ppa:ondrej/php'
+      update_cache: yes
+  - name: "Install Apache, MySQL, PHP, and other dependencies."
+    apt:
+      name:
+        - git
+        - curl
+        - unzip
+        - sendmail
+        - ufw
+      state: present
+  - name: "Disable the firewall (since this is for local dev only)."
+    service:
+      name: ufw
+      state: stopped
