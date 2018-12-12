@@ -15,8 +15,8 @@
         name: apache2
         state: restarted
   tasks:
-    - import_tasks: tasks/common.yml
-    - import_tasks: tasks/apache-php.yml 
-    - import_tasks: tasks/mySQL.yml
-    - import_tasks: tasks/composer-drush.yml
-    - import_tasks: tasks/drupal.yml
+    - common
+    - apache-php
+    - mysql
+    - composer-drush
+    - drupal
