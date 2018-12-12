@@ -11,7 +11,7 @@
     creates={{ drupal_core_path }}/vendor/autoload.php
 - name: "Install Drupal."
   command: >
-    drush si -y --site-name= "{{ drupal_site_name }}"
+    drush si -y --site-name="{{ drupal_site_name }}"
     --account-name=admin
     --account-pass=admin
     --db-url=mysql://{{ domain }}:1234@localhost/{{ domain }}
