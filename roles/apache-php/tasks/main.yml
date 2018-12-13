@@ -38,7 +38,7 @@
 
 - name: "Add Apache virtualhost for Drupal 8."
   template:
-    src: "templates/drupal.test.conf.j2"
+    src: "drupal.test.conf.j2"
     dest: "/etc/apache2/sites-available/{{ domain }}.test.conf"
     owner: root
     group: root
